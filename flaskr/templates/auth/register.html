@@ -1,0 +1,50 @@
+{% extends 'base.html' %} {% block header %} {% endblock %} {% block content %}
+<div class="grid grid-cols-2 h-[100vh] p-4">
+  <div class="bg-red-400 rounded-lg mx-2">
+    <img
+      class="w-full h-full"
+      src="{{url_for('static', filename='images/loginbg.jpg')}}" />
+  </div>
+  <div class="flex flex-col items-center justify-center mx-auto">
+    <h1 class="poppins-semibold text-5xl my-2">Create an account</h1>
+    <div class="my-4 flex align-self-start w-full poppins-light text-white/70">
+      <p class="">
+        Already have an account.
+        <span class="underline accented"
+          ><a href="{{url_for('auth.login')}}">Log in</a></span
+        >
+      </p>
+    </div>
+    <form method="post" class="mt-16 w-full">
+      <div class="mb-8">
+        <input
+          name="username"
+          id="username"
+          class="p-4"
+          placeholder="Username"
+          required />
+      </div>
+
+      <div class="mb-8">
+        <input
+          class="p-4"
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email"
+          required />
+      </div>
+      <div class="mb-8">
+        <input
+          class="p-4"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          required />
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
