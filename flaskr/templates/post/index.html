@@ -1,0 +1,81 @@
+{%extends 'base.html'%} {%block content%}
+
+<div class="p-[5%] w-full">
+  <h1 class="text-4xl"><span class="logo">Hello</span>, {{g.user['first_name']}}</h1>
+
+  <div
+    class="border-y border-y-slate-50/20 h-52 max-w-[900px] mt-16 flex items-center justify-between">
+    <div class="flex p-2 items-center border-r border-r-slate-50/20">
+      <div
+        class="p-6 rounded-full bg-slate-50/20 flex items-center mr-2 shadow-lg">
+        <i class="fa-solid fa-users"></i>
+      </div>
+      <div class="flex flex-col">
+        <div class=" ">Total users</div>
+        <div class="text-xl poppins-semibold mx-auto">
+          {{user_count}} <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flex p-2 items-center border-r border-r-slate-50/20">
+      <div
+        class="p-6 rounded-full bg-slate-50/20 flex items-center mr-2 shadow">
+        <i class="fa-solid fa-envelopes-bulk"></i>
+      </div>
+      <div class="flex flex-col">
+        <div class=" ">Total posts</div>
+        <div class="text-xl poppins-semibold mx-auto">
+          {{posts}} <i class="fa-solid fa-arrow-trend-up"></i>
+        </div>
+      </div>
+    </div>
+    <div class="flex p-2 items-center border-r border-r-slate-50/20">
+      <div class="p-6 rounded-full bg-slate-50/20 flex items-center mr-2">
+        <i class="fa-solid fa-face-grin-hearts"></i>
+      </div>
+      <div class="flex flex-col">
+        <div class=" ">User Engagement</div>
+        <div class="text-xl poppins-semibold mx-auto">
+          78<i class="fa-solid fa-percent"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table border="1" cellpadding="10" cellspacing="0" >
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Department</th>
+        <th>Email</th>
+        <th>Last Logged In</th>
+        <th>Is Admin</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%for u in users%}
+      <tr>
+        <td>{{u['first_name']}}</td>
+        <td>{{u['last_name']}}</td>
+        <td>{{u['date_of_birth']}}</td>
+        <td>{{u['department']}}</td>
+        <td>{{u['email']}}</td>
+        <td>{{u['last_logged_in']}}</td>
+        {%if is_admin%}
+        <td>admin</td>
+        {%else%}
+        <td>user</td>
+        {%endif%}
+        <td class="flex justify-evenly">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <i class="fa-solid fa-square-minus"></i>
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+</div>
+{%endblock%}

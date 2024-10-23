@@ -16,19 +16,28 @@
       </p>
     </div>
     <form method="post" class="mt-16 w-full">
-      <div class="mb-8">
-        <input
-          name="username"
-          id="username"
-          class="p-4"
-          placeholder="Username"
-          required />
+      <div class="flex grid grid-cols-2 gap-2">
+        <div class="mb-8">
+          <input
+            name="first_name"
+            id="first_name"
+            class="p-4"
+            placeholder="first name"
+            required />
+        </div>
+        <div class="mb-8">
+          <input
+            name="last_name"
+            id="last_name"
+            class="p-4"
+            placeholder="last name"
+            required />
+        </div>
       </div>
-
       <div class="mb-8">
         <input
           class="p-4"
-          type="text"
+          type="email"
           name="email"
           id="email"
           placeholder="Email"
@@ -42,6 +51,32 @@
           id="password"
           placeholder="Password"
           required />
+      </div>
+      <div class="flex grid grid-cols-2 gap-2">
+        <div class="mb-8">
+          <label for="date_of_birth">Enter date of birth</label>
+          <input
+            type="date"
+            name="date_of_birth"
+            id="date_of_birth"
+            class="p-4"
+            placeholder="date of birth"
+            required />
+        </div>
+        <div class="mb-8">
+          <label for="department">Select department</label>
+          <select name="department" id="department">
+            <option value="0">Select department</option>
+            {%for opt in departmentOpts%}
+            <option value="{{opt}}">{{opt}}</option>
+            {%endfor%}
+          </select>
+        </div>
+      </div>
+      <div class="mb-8">
+        <input type="hidden" name="is_admin" value="0" />
+        <input type="checkbox" name="is_admin" id="is_admin" value="1" />
+        <span>Are you an admin</span>
       </div>
       <button type="submit">Register</button>
     </form>

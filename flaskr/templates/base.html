@@ -8,26 +8,43 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet" />
-</head>
-<body class="poppins-regular">
-  {%if g.user%}
-  <nav class="bg-white flex">
-    <h1>Flaskr</h1>
-    <ul>
-      {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span></li>
-      <li><a href="{{ url_for('auth.logout') }}">Log Out</a> {% else %}</li>
+  <script
+    src="https://kit.fontawesome.com/afadbc8ab9.js"
+    crossorigin="anonymous"></script>
 
-      <li><a href="{{ url_for('auth.register') }}">Register</a></li>
-      <li>
-        <a href="{{ url_for('auth.login') }}">Log In</a>
-        {% endif %}
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+</head>
+<body class="poppins-regular flex">
+  {%if g.user%}
+  <aside
+    class="flex h-[100vh] w-[300px] border-r border-r-slate-50/20 flex flex-col px-4">
+    <h1 class="py-4 flex text-center text-2xl logo">Premiere</h1>
+    <ul class="mt-24">
+      <li class="my-8">
+        <a href=""><i class="fa-solid fa-house pr-4"></i>Home</a>
+      </li>
+      <li class="my-8">
+        <a href=""><i class="fa-solid fa-user pr-4"></i>Create user</a>
+      </li>
+      <li class="my-8">
+        <a href=""><i class="fa-solid fa-newspaper pr-4"></i>Create posts</a>
+      </li>
+      <li class="my-8">
+        <a href=""><i class="fa-solid fa-sliders pr-4"></i>Profile</a>
       </li>
     </ul>
-  </nav>
+
+    <ul class="mt-auto">
+      <li class="my-4">
+        <a href="">Log out</a>
+      </li>
+    </ul>
+  </aside>
   {%endif%}
 
-  <section class="content">
+  <section class="flex-grow">
     <header>{% block header %}{% endblock %}</header>
     {% for message in get_flashed_messages() %}
     <div class="flash">{{ message }}</div>

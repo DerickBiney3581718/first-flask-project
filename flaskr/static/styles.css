@@ -16,8 +16,17 @@ h1 {
 .accented {
   color: var(--accent-color);
 }
-input,
-button {
+.logo {
+  font-family: "Playwrite GB S", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+li:hover {
+  opacity: 0.5;
+}
+input:not([type="checkbox"]),
+button,
+select {
   min-width: 100%;
   box-sizing: border-box; /* Include padding in the width */
   height: 55px;
@@ -32,11 +41,41 @@ input:focus {
   outline-width: 5px;
   outline-color: var(--accent-color);
 }
-
+.flash {
+  position: absolute;
+  z-index: 10;
+  box-shadow: 2px;
+  background-color: white;
+  color: var(--primary-color);
+  border-radius: 5px;
+  padding: 4px 8px;
+}
 button {
   background-color: var(--accent-color) !important;
 }
 
+label {
+  font-size: x-small;
+  opacity: 0.5;
+}
+
+aside {
+  box-shadow: 0.5px 0.5px var(--secondary-color);
+  background-color: var(--accent-color);
+}
+table {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+}
+
+td,
+tr {
+  padding: 5px;
+  overflow: hidden;
+  margin: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 .poppins-thin {
   font-family: "Poppins", sans-serif;

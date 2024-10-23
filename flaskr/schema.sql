@@ -3,10 +3,14 @@ DROP TABLE IF EXISTS post;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  username TEXT  NOT NULL,
+  first_name TEXT  NOT NULL,
+  last_name TEXT  NOT NULL,
+  date_of_birth DATE,
+  department TEXT NOT NULL,
   email TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL,
-  last_logged_in DATETIME DEFAULT CURRENT_TIMESTAMP
+  last_logged_in DATETIME DEFAULT CURRENT_TIMESTAMP,
+  is_admin BOOLEAN NOT NULL DEFAULT 0
 );
 
 CREATE TABLE post (
@@ -15,5 +19,6 @@ CREATE TABLE post (
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   title TEXT NOT NULL,
   body TEXT NOT NULL,
+  topic TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user (id)
 );
