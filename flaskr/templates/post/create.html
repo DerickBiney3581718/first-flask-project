@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block header %} {% endblock %} {% block content %}
+<div class="flex justify-center items-center h-full">
+  <div class="flex flex-col items-start justify-center mx-auto w-max-content">
+    <h1 class="poppins-semibold text-3xl my-2">Create new user</h1>
+    <form method="post" class="mt-16 w-full max-w-[650px]">
+      <div class="flex grid grid-cols-2 gap-2">
+        <div class="mb-8">
+          <input
+            name="first_name"
+            id="first_name"
+            class="p-4"
+            placeholder="first name"
+            required />
+        </div>
+        <div class="mb-8">
+          <input
+            name="last_name"
+            id="last_name"
+            class="p-4"
+            placeholder="last name"
+            required />
+        </div>
+      </div>
+      <div class="mb-8">
+        <input
+          class="p-4"
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          required />
+      </div>
+
+      <div class="flex grid grid-cols-2 gap-2">
+        <div class="mb-8">
+          <label for="date_of_birth">Enter date of birth</label>
+          <input
+            type="date"
+            name="date_of_birth"
+            id="date_of_birth"
+            class="p-4"
+            placeholder="date of birth"
+            required />
+        </div>
+        <div class="mb-8">
+          <label for="department">Select department</label>
+          <select name="department" id="department">
+            <option value="0">Select department</option>
+            {%for opt in departmentOpts%}
+            <option value="{{opt}}">{{opt}}</option>
+
+            {%endfor%}
+          </select>
+        </div>
+      </div>
+      <div class="mb-8">
+        <input type="hidden" name="is_admin" value="0" />
+        <input type="checkbox" name="is_admin" id="is_admin" value="1" />
+        <span>Make an admin</span>
+      </div>
+      <button type="submit">create</button>
+    </form>
+  </div>
+</div>
+{%endblock%}

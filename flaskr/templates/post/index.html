@@ -1,7 +1,9 @@
 {%extends 'base.html'%} {%block content%}
 
 <div class="p-[5%] w-full">
-  <h1 class="text-4xl"><span class="logo">Hello</span>, {{g.user['first_name']}}</h1>
+  <h1 class="text-4xl">
+    <span class="logo">Hello</span>, {{g.user['first_name']}}
+  </h1>
 
   <div
     class="border-y border-y-slate-50/20 h-52 max-w-[900px] mt-16 flex items-center justify-between">
@@ -42,14 +44,14 @@
     </div>
   </div>
 
-  <table border="1" cellpadding="10" cellspacing="0" >
+  <table border="1" cellpadding="20" cellspacing="0">
     <thead>
       <tr>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Date of Birth</th>
         <th>Department</th>
-        <th>Email</th>
+        <th colspan="2">Email</th>
         <th>Last Logged In</th>
         <th>Is Admin</th>
         <th>actions</th>
@@ -62,7 +64,7 @@
         <td>{{u['last_name']}}</td>
         <td>{{u['date_of_birth']}}</td>
         <td>{{u['department']}}</td>
-        <td>{{u['email']}}</td>
+        <td colspan="2">{{u['email']}}</td>
         <td>{{u['last_logged_in']}}</td>
         {%if is_admin%}
         <td>admin</td>
@@ -70,8 +72,12 @@
         <td>user</td>
         {%endif%}
         <td class="flex justify-evenly">
-          <i class="fa-solid fa-pen-to-square"></i>
-          <i class="fa-solid fa-square-minus"></i>
+          <a href="{{url_for('post.update_user', user=u['id'])}}">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </a>
+          <a href="{{url_for('post.delete_user', user=u['id'])}}">
+            <i class="fa-solid fa-square-minus"></i>
+          </a>
         </td>
       </tr>
       {%endfor%}

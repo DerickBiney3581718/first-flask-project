@@ -1,0 +1,21 @@
+{%extends 'base.html'%} {%block content%}
+
+<div class="flex items-center justify-center h-full">
+  <div class="flex flex-col justify-between items-start modal">
+    <h1 class="my-2 text-2xl">Click on delete to confirm</h1>
+    <p class="mb-4 tracking-wide text-white/50">
+      Deleting user {{u['first_name']}} {{u['last_name']}} is irreversible
+    </p>
+
+    <div class="flex flex-row items-center justify-evenly w-full">
+      <a href="{{url_for('index')}}">
+        <p class="cancel">Cancel</p>
+      </a>
+      <form method="POST">
+          <button class="confirm" type="submit">Confirm</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

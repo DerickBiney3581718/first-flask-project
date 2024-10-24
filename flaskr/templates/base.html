@@ -22,23 +22,31 @@
     class="flex h-[100vh] w-[300px] border-r border-r-slate-50/20 flex flex-col px-4">
     <h1 class="py-4 flex text-center text-2xl logo">Premiere</h1>
     <ul class="mt-24">
-      <li class="my-8">
-        <a href=""><i class="fa-solid fa-house pr-4"></i>Home</a>
+      <li
+        class="my-8 p-4 rounded-lg {%if request.path == url_for('index')%} li-active{%endif%}">
+        <a href="{{url_for('index')}}"
+          ><i class="fa-solid fa-house pr-4"></i>Home</a
+        >
       </li>
-      <li class="my-8">
-        <a href=""><i class="fa-solid fa-user pr-4"></i>Create user</a>
+      <li
+        class="my-8 p-4 rounded-lg {%if request.path == url_for('post.create_user')%} li-active{%endif%}">
+        <a href="{{url_for('post.create_user')}}"
+          ><i class="fa-solid fa-user pr-4"></i>Create user</a
+        >
       </li>
-      <li class="my-8">
-        <a href=""><i class="fa-solid fa-newspaper pr-4"></i>Create posts</a>
-      </li>
-      <li class="my-8">
-        <a href=""><i class="fa-solid fa-sliders pr-4"></i>Profile</a>
+
+      <li class="my-8 p-4 rounded-lg">
+        <a href="{{url_for('post.update_profile')}}"
+          ><i class="fa-solid fa-sliders pr-4"></i>Profile</a
+        >
       </li>
     </ul>
 
     <ul class="mt-auto">
-      <li class="my-4">
-        <a href="">Log out</a>
+      <li class="my-4 p-4">
+        <a href="{{url_for('auth.logout')}}">
+          <i class="fa-solid fa-right-from-bracket pr-4"></i>Log out</a
+        >
       </li>
     </ul>
   </aside>

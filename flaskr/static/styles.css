@@ -21,8 +21,19 @@ h1 {
   font-optical-sizing: auto;
   font-style: normal;
 }
-li:hover {
+li:hover,
+.li-active {
   opacity: 0.5;
+}
+.li-active {
+  background-color: var(--primary-color);
+  transition: all 0.5s;
+}
+
+.modal {
+  background-color: var(--accent-color);
+  padding: 10px;
+  border-radius: 10px;
 }
 input:not([type="checkbox"]),
 button,
@@ -44,16 +55,28 @@ input:focus {
 .flash {
   position: absolute;
   z-index: 10;
+  top: 10px;
+  right: 10px;
   box-shadow: 2px;
   background-color: white;
   color: var(--primary-color);
+  opacity: 0.9;
   border-radius: 5px;
-  padding: 4px 8px;
+  padding: 10px;
 }
 button {
   background-color: var(--accent-color) !important;
+  font-size: smaller;
 }
-
+.cancel,
+.confirm {
+  background-color: #ff0000;
+  border-radius: 5px;
+  padding: 10px;
+}
+.confirm {
+  background-color: var(--primary-color) !important;
+}
 label {
   font-size: x-small;
   opacity: 0.5;
@@ -70,13 +93,21 @@ table {
 
 td,
 tr {
-  padding: 5px;
+  padding: 15px;
   overflow: hidden;
   margin: 10px;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-
+tr:hover {
+  opacity: 0.5;
+}
+thead {
+  font-family: "Playwrite GB S", cursive;
+}
+i:hover {
+  cursor: pointer;
+}
 .poppins-thin {
   font-family: "Poppins", sans-serif;
   font-weight: 100;

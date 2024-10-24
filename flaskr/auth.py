@@ -31,12 +31,14 @@ def get_logged_in_user():
         db = get_db()
         g.user = db.execute(f'SELECT * FROM user where id = ?',
                             (user_id,)).fetchone()
-        print('checkin gg user...', g.user['first_name'])
+        # print('checkin gg user...', g.user['first_name'])
 
 
 @auth.route('register', methods=['GET', 'POST'])
 def register():
     departmentOpts = ('DEV', 'SUPPORT', 'MARKETING', 'HR')
+    if g.user:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         # get data, validate , hash , password, insert in db, flash, add error
         print('request form...', request.form)
@@ -74,6 +76,8 @@ def register():
 
 @auth.route('login', methods=['GET', 'POST'])
 def login():
+    if g.user:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -84,7 +88,7 @@ def login():
             error = 'All fields required'
         else:
             user = db.execute(
-                'SELECT email, first_name, last_name, date_of_birth, is_admin, department from user WHERE email = ?', (email,)).fetchone()
+                'SELECT * from user WHERE email = ?', (email,)).fetchone()
 
             if user is None:
                 error = 'credentials are invalid'
